@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>ORDER WA</title>
+  </head>
+  <body>
+	  <style>
+      	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	box-sizing:border-box;
+	outline:none;
+	margin:0;
+	padding:0;
+}
+.whatsapp-btn {
+	cursor:pointer;
+	position:fixed;
+	bottom:90px;
+	right:90px;
+	display:block;
+	width:90px;
+	height:90px;
+	border-radius:90px;
+	text-indent:-9999px;
+	background:#fff url(https://lh3.googleusercontent.com/-evFtor-f_w8/W4pfajfP17I/AAAAAAAAE9E/f7H52hrT5UoY4ZqdkxSGh2ZftYrH8fiDwCLcBGAs/s300/Whatsapp.png) no-repeat center center;
+	background-size:50% auto;
+	box-shadow:0 20px 25px rgba(0,0,0,.05);
+	transition:.2s;
+}
+.whatsapp-btn:active {
+	bottom:35px;
+}
+#whatsapp {
+	position:fixed;
+	z-index:+100;
+	bottom:0px;
+	right:0px;
+	display:block;
+	background:#ffff;
+	box-shadow:0 20px 25px rgba(0, 0, 0, 0);
+	max-width:-webkit-fill-available;
+	font-family:Helvetica;
+	font-size:50%;
+	border-radius:2px;
+	visibility:hidden;
+	opacity:0;
+	transition:.3s;
+}
+#whatsapp.toggle {
+    font-size: 90%;
+	font-weight:bold;
+	text-align:left;
+    padding: 5px;
+    position: relative;
+    visibility: initial;
+    opacity: unset;
+}
+@media(max-width:320px) {
+	.whatsapp-btn {
+		bottom:10px;
+		right:10px;
+	}
+	#whatsapp.toggle {
+		bottom:80px;
+		right:10px;
+		visibility:visible;
+		opacity:1;
+	}
+}
+#whatsapp label,
+#whatsapp a {
+	display:block;
+	margin:15px;
+	text-decoration:none;
+}
+#whatsapp input,
+#whatsapp textarea {
+	display:block;
+	border:1px solid #35C27A;
+	box-shadow:inset 0 2px 5px #ffffff00;
+	width:-webkit-fill-available;
+	padding:10px;
+	border-radius:2px;
+}
+#whatsapp input.nama {
+	text-transform:capitalize;
+}
+#whatsapp input:focus,
+#whatsapp textarea:focus {
+	border:1px solid #ddd;
+}
+#whatsapp textarea {
+	min-height:80px;
+	resize: none;
+}
+#whatsapp a {
+	cursor:pointer;
+	display:block;
+	padding:10px;
+	font-weight:bold;
+	text-align:center;
+	background:#35C27A;
+	color:white;
+	border-radius:2px;
+}
+#whatsapp a:hover {
+	background:#187a30;
+            }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div id="whatsapp" class="toggle">
+
+<input class="tujuan" type="hidden" value="08129720519X" /> <!-- No. WhatsApp tujuan -->
+
+
+<label>Nama Anda :
+<input class="nama" type="text" placeholder="Tulis Nama Lengkap." />
+</label>
+<label>Jumlah Order :
+<input class="pesan" type="pesan" placeholder="contoh : 2 paket" />
+</label>
+<label>Nomor HP / Whatsapp:
+<input class="nomor" type="nomor" placeholder="contoh : 08129720519X" />
+</label>
+<label>Email Aktif :
+<input class="email" type="text" placeholder="Tulis Email Aktif." />
+</label>
+<label>Alamat Lengkap :
+<textarea class="alamat" placeholder="contoh: Jl. Raya Bogor Kp. Sindang Palay RT.12 / RW.05 Ds. Margalaksana Kec. Ciseeng Kab. Bogor 16120"></textarea>
+</label>
+<a class="submit"><i class='icon ion-logo-whatsapp'></i>~ KIRIM KE WHATSAPP ~</a>
+
+</div>
+
+    <script>
+ $('.whatsapp-btn').click(function(){
+	$('#whatsapp').toggleClass('toggle');
+});
+// Onclick Whatsapp Sent!
+$('#whatsapp .submit').click(WhatsApp);
+
+$("#whatsapp input, #whatsapp textarea").keypress(function() {
+	if (event.which == 13) WhatsApp();
+});
+var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+function WhatsApp() {
+	var ph = '';
+	if ($('#whatsapp .nama').val() == '') { // Cek Nama
+		ph = $('#whatsapp .nama').attr('placeholder');
+		alert('Silahkan tulis ' + ph);
+		$('#whatsapp .nama').focus();
+		return false;
+	} else if ($('#whatsapp .alamat').val() == '') { // Cek Alamat
+		ph = $('#whatsapp .alamat').attr('placeholder');
+		alert('Silahkan tulis ' + ph);
+		$('#whatsapp .alamat').focus();
+		return false;
+	} else if ($('#whatsapp .nomor').val() == '') { // Cek Nomor
+		ph = $('#whatsapp .nomor').attr('placeholder');
+		alert('Silahkan tulis ' + ph);
+		$('#whatsapp .nomor').focus();
+		return false;
+	} else if ($('#whatsapp .email').val() == '') { // Cek Email
+		ph = $('#whatsapp .email').attr('placeholder');
+		alert('Silahkan tulis ' + ph);
+		$('#whatsapp .email').focus();
+		return false;
+	} else if ($('#whatsapp .pesan').val() == '') { // Cek Pesan
+		ph = $('#whatsapp .pesan').attr('placeholder');
+		alert('Silahkan tulis ' + ph);
+		$('#whatsapp .pesan').focus();
+		return false;
+	} else {
+		if (!confirm("Klik oke untuk kirim via WhatsApp")) {
+			window.open("https://www.whatsapp.com/download/");
+		} else {
+			// Check Device (Mobile/Desktop)
+			var url_wa = 'https://web.whatsapp.com/send';
+			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+				url_wa = 'whatsapp://send/';
+			}
+			// Get Value
+			var tujuan = $('#whatsapp .tujuan').val(),
+					via_url = location.href,
+					nama = $('#whatsapp .nama').val(),
+					pesan = $('#whatsapp .pesan').val(),
+                    nomor = $('#whatsapp .nomor').val(),
+                    email = $('#whatsapp .email').val(),
+					alamat = $('#whatsapp .alamat').val();
+			$(this).attr('href', url_wa + '?phone=62 ' + tujuan + '&text=Halo admin saya mau order mohon dibantu cara pemesanannya, saya %0A%0ANama:%20 *' + nama + '* %0A%0AAlamat:%20' + alamat +' %0A%0ANo.tlp:%20'+ nomor +' %0A%0AEmail:%20'+ email +' %0A%0AOrder:%20' + pesan + '%0A%0AMohon dibantu total dan cara pembayarannya kak');
+			var w = 960,
+					h = 540,
+					left = Number((screen.width / 2) - (w / 2)),
+					tops = Number((screen.height / 2) - (h / 2)),
+					popupWindow = window.open(this.href, '', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=1, copyhistory=no, width=' + w + ', height=' + h + ', top=' + tops + ', left=' + left);
+			popupWindow.focus();
+			return false;
+		}
+	}
+}
+
+</script>
+	  
+  </body>
+</html>
